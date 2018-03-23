@@ -1,0 +1,22 @@
+#display {
+    border: black 1px solid;
+    text-align: right;
+    padding: 2px;
+}
+
+#cash_register {
+    width: 250px;
+    padding: 10px;
+    border: black 1px solid;
+    margin: auto;
+}
+#cash_register > table {
+    margin: auto;
+}
+.button {
+    width:24px;
+}
+
+.cash_register_button {
+    margin-left: 15px;
+}
