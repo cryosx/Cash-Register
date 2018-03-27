@@ -3,18 +3,11 @@ let calculator = Calculator();
 let cashRegister = CashRegister(0, display);
 let operation = null;
 let expression = null;
-let operators = {
-    add: '+',
-    subtract: '-',
-    divide: '÷',
-    multiply: '×'
-}
 
 
 let numButtons = document.getElementsByClassName('num_button');
 for (let i = 0; i < numButtons.length; i++) {
     numButtons[i].addEventListener('click', function() {
-        console.log(this.value);
         setDisplay(this.value);
     });   
 }
@@ -33,7 +26,6 @@ decimalBtn.addEventListener('click', function() {
 let operatorBtns = document.getElementsByClassName('operator_button');
 for (let i = 0; i < operatorBtns.length; i++) {
     operatorBtns[i].addEventListener('click', function() {
-        console.log(operation);
         if (operation) {
             calculator[operation](Number.parseFloat(getDisplay()));
             operation = this.value;
@@ -84,14 +76,12 @@ function CashRegister(balance, display) {
     let _display = display;
 
     function getBalance() {
-        console.log('Balance: ' + _balance);
         _display.innerHTML = _balance.toFixed(2);
         return _balance;
     }
 
     function makeDeposit(value) {
         _balance += Number.parseFloat(value);
-        console.log('Balance: ' + _balance);
     }
 
     function makeWithdraw(value) {
@@ -110,13 +100,11 @@ function CashRegister(balance, display) {
 
 function getDisplay() {
     let display = document.getElementById('display');
-    console.log(display.innerHTML);
     return display.innerHTML;
 }
 
 function setDisplay(value) {
     let display = document.getElementById('display');
-    console.log(display.innerHTML);
     if (display.innerHTML === '0.00' || display.innerHTML === '0' || operation !== null) {
         display.innerHTML = value;
     } else {
