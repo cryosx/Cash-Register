@@ -114,6 +114,9 @@ function Calculator(memory, total) {
    * Validation
    */
 
+   function eval() {
+       
+   }
 
 
    return {
