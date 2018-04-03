@@ -45,7 +45,8 @@ calculateBtn.addEventListener('click', function() {
     if (calculator.hasOwnProperty(operation)) {
         calculator[operation](Number.parseFloat(getDisplay()));
         operation = null;
-        clearDisplay();
+        display.innerHTML = '0.00';
+        calculator.clearMemory();
         setDisplay(calculator.getTotal());
     }
 });
@@ -118,4 +119,6 @@ function clearDisplay() {
     let display = document.getElementById('display_value');
     display.innerHTML = '0.00';
     calculator.clearMemory();
+    calculator.load(0);
+    operation = null;
 }
