@@ -1,17 +1,19 @@
-let display = document.getElementById('display');
-let calculator = Calculator();
+let display = document.getElementById('display_value');
+let calculator = calculatorModule();
 let cashRegister = CashRegister(0, display);
 let operation = null;
-let expression = null;
-
 
 let numButtons = document.getElementsByClassName('num_button');
 for (let i = 0; i < numButtons.length; i++) {
     numButtons[i].addEventListener('click', function() {
         setDisplay(this.value);
-    });   
+        if (this.value % 2 === 0) {
+            cash_register.className = 'retro';
+        } else {
+            cash_register.className = 'base_theme';
+        }
+    });
 }
-
 
 let periodBtn = document.getElementById('button_period');
 periodBtn.addEventListener('click', function() {
@@ -20,7 +22,7 @@ periodBtn.addEventListener('click', function() {
 
 let decimalBtn = document.getElementById('button_00');
 decimalBtn.addEventListener('click', function() {
-    display.innerHTML = (Number.parseFloat(display.innerHTML)/100).toFixed(2);
+    display.innerHTML = (Number.parseFloat(display.innerHTML) / 100).toFixed(2);
 });
 
 let operatorBtns = document.getElementsByClassName('operator_button');
@@ -35,8 +37,7 @@ for (let i = 0; i < operatorBtns.length; i++) {
             calculator.load(Number.parseFloat(getDisplay()));
             operation = this.value;
         }
-      
-    });  
+    });
 }
 
 let calculateBtn = document.getElementById('button_calculate');
@@ -44,18 +45,16 @@ calculateBtn.addEventListener('click', function() {
     if (calculator.hasOwnProperty(operation)) {
         calculator[operation](Number.parseFloat(getDisplay()));
         operation = null;
-        expression = null;
         clearDisplay();
         setDisplay(calculator.getTotal());
     }
 });
 
-
 let clrDisplayBtn = document.getElementById('button_clear');
 clrDisplayBtn.addEventListener('click', clearDisplay);
 
 let getBalBtn = document.getElementById('button_get_balance');
-getBalBtn.addEventListener('click', function () {
+getBalBtn.addEventListener('click', function() {
     cashRegister.getBalance();
 });
 
@@ -93,19 +92,22 @@ function CashRegister(balance, display) {
     return {
         getBalance: getBalance,
         makeDeposit: makeDeposit,
-        makeWithdraw: makeWithdraw,
+        makeWithdraw: makeWithdraw
     };
-
 }
 
 function getDisplay() {
-    let display = document.getElementById('display');
+    let display = document.getElementById('display_value');
     return display.innerHTML;
 }
 
 function setDisplay(value) {
-    let display = document.getElementById('display');
-    if (display.innerHTML === '0.00' || display.innerHTML === '0' || operation !== null) {
+    let display = document.getElementById('display_value');
+    if (
+        display.innerHTML === '0.00' ||
+        display.innerHTML === '0' ||
+        operation !== null
+    ) {
         display.innerHTML = value;
     } else {
         display.innerHTML += value;
@@ -113,8 +115,7 @@ function setDisplay(value) {
 }
 
 function clearDisplay() {
-    let display = document.getElementById('display');
+    let display = document.getElementById('display_value');
     display.innerHTML = '0.00';
-    expression = null;
     calculator.clearMemory();
 }

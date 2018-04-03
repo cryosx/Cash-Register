@@ -1,53 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/themes/base-theme.css">
+    <link rel="stylesheet" href="css/themes/retro.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P|Roboto" rel="stylesheet">
+
     <title>Document</title>
 </head>
+
 <body>
-    <div id="cash_register">
-        <div id="display_container"><span>$</span><span id="display">0.00</span></div>
-        <table>
+    <div class="base_theme" id="cash_register">
+        <div id="display">
+            <span id="currency">$</span>
+            <span id="display_value">0.00</span>
+        </div>
+        <div id="cash_register_buttons">
+            <div id="num_buttons">
+                <button class="num_button" value="7">7</button>
+                <button class="num_button" value="8">8</button>
+                <button class="num_button" value="9">9</button>
+                <button class="num_button" value="4">4</button>
+                <button class="num_button" value="5">5</button>
+                <button class="num_button" value="6">6</button>
+                <button class="num_button" value="1">1</button>
+                <button class="num_button" value="2">2</button>
+                <button class="num_button" value="3">3</button>
+                <button class="num_button" value="0">0</button>
+                <button class="num_button" id="button_00" value="00">00</button>
+                <button class="num_button" id='button_period' value=".">.</button>
+            </div>
+            <div id="operator_buttons">
+                <button class="operator_button" value="divide">÷</button>
+                <button class="operator_button" value="multiply">×</button>
+                <button class="operator_button" value="subtract">-</button>
+                <button class="operator_button" value="add">+</button>
+                <!-- <button class="operator_button" value="=">=</button> -->
+                <button id="button_calculate">=</button>
+
+            </div>
+            <div id="register_buttons">
+                <button class="register_button" id="button_clear">Clear</button>
+                <button class="register_button" id="button_get_balance">Get Balance</button>
+                <button class="register_button" id="button_deposit_cash">Deposit Cash</button>
+                <button class="register_button" id="button_withdraw_cash">Withdraw Cash</button>
+            </div>
+        </div>
+        <!-- <table>
             <tr>
-                <td><button class="button num_button" id="button_7" value="7">7</button></td>
-                <td><button class="button num_button" id="button_8" value="8">8</button></td>
-                <td><button class="button num_button" id="button_9" value="9">9</button></td>
-                <td><button class="button operator_button" id="button_divide" value="divide">÷</button></td>
-                <td><button class="cash_register_button" id="button_clear">Clear</button></td>                    
+                <td>
+                    <button class="button num_button" id="button_7" value="7">7</button>
+                </td>
+                <td>
+                    <button class="button num_button" id="button_8" value="8">8</button>
+                </td>
+                <td>
+                    <button class="button num_button" id="button_9" value="9">9</button>
+                </td>
+                <td>
+                    <button class="button operator_button" id="button_divide" value="divide">÷</button>
+                </td>
+                <td>
+                    <button class="cash_register_button" id="button_clear">Clear</button>
+                </td>
             </tr>
             <tr>
-                <td><button class="button num_button" id="button_4" value="4">4</button></td>
-                <td><button class="button num_button" id="button_5" value="5">5</button></td>
-                <td><button class="button num_button" id="button_6" value="6">6</button></td>
-                <td><button class="button operator_button" id="button_multiply" value="multiply">×</button></td>
-                <td><button class="cash_register_button" id="button_get_balance">Get Balance</button></td>                                        
+                <td>
+                    <button class="button num_button" id="button_4" value="4">4</button>
+                </td>
+                <td>
+                    <button class="button num_button" id="button_5" value="5">5</button>
+                </td>
+                <td>
+                    <button class="button num_button" id="button_6" value="6">6</button>
+                </td>
+                <td>
+                    <button class="button operator_button" id="button_multiply" value="multiply">×</button>
+                </td>
+                <td>
+                    <button class="cash_register_button" id="button_get_balance">Get Balance</button>
+                </td>
 
             </tr>
             <tr>
-                <td><button class="button num_button" id="button_1" value="1">1</button></td>
-                <td><button class="button num_button" id="button_2" value="2">2</button></td>
-                <td><button class="button num_button" id="button_3" value="3">3</button></td>
-                <td><button class="button operator_button" id="button_subtract" value="subtract">-</button></td>
-                <td><button class="cash_register_button" id="button_deposit_cash">Deposit Cash</button></td>                    
+                <td>
+                    <button class="button num_button" id="button_1" value="1">1</button>
+                </td>
+                <td>
+                    <button class="button num_button" id="button_2" value="2">2</button>
+                </td>
+                <td>
+                    <button class="button num_button" id="button_3" value="3">3</button>
+                </td>
+                <td>
+                    <button class="button operator_button" id="button_subtract" value="subtract">-</button>
+                </td>
+                <td>
+                    <button class="cash_register_button" id="button_deposit_cash">Deposit Cash</button>
+                </td>
 
             </tr>
-                <tr>
-                <td><button class="button num_button" id="button_0" value="0">0</button></td>
-                <td><button class="button" id="button_00">00</button></td>
-                <td><button class="button" id="button_period" value=".">.</button></td>
-                <td><button class="button operator_button" id="button_add" value="add">+</button></td>
-                <td><button class="cash_register_button" id="button_withdraw_cash">Withdraw Cash</button></td>                                        
+            <tr>
+                <td>
+                    <button class="button num_button" id="button_0" value="0">0</button>
+                </td>
+                <td>
+                    <button class="button" id="button_00">00</button>
+                </td>
+                <td>
+                    <button class="button" id="button_period" value=".">.</button>
+                </td>
+                <td>
+                    <button class="button operator_button" id="button_add" value="add">+</button>
+                </td>
+                <td>
+                    <button class="cash_register_button" id="button_withdraw_cash">Withdraw Cash</button>
+                </td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td><button class="button" id="button_calculate">=</button></td>
+                <td>
+                    <button class="button" id="button_calculate">=</button>
+                </td>
             </tr>
-        </table>
+        </table> -->
         <!-- <table>
             <tr>
                 <td><button class="button" id="button_divide">÷</button></td>
@@ -65,10 +147,11 @@
                 <td><button class="button" id="button_calculate">=</button></td>
             </tr>
         </table>
-        -->            
+        -->
     </div>
 
     <script src="./js/calculator.js"></script>
     <script src="./js/cash_register.js"></script>
 </body>
+
 </html>

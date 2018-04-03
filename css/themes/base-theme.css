@@ -1,0 +1,81 @@
+.base_theme {
+    width: 40%;
+    /* padding: 5px; */
+    margin: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+}
+
+.base_theme * {
+    font-family: 'Roboto', sans-serif;
+}
+
+.base_theme #display {
+    background-color: #44a8ef;
+    text-align: right;
+    padding: 8px;
+    color: white;
+    border-radius: 2px 2px 0px 0px;
+}
+
+.base_theme #cash_register_buttons {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 8px 8px;
+}
+
+.base_theme #num_buttons {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+}
+
+.base_theme #operator_buttons {
+    display: grid;
+    grid-template-columns: 24px;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    /* margin: auto; */
+}
+
+.base_theme #register_buttons {
+    display: grid;
+    grid-template-rows: 20% 20% 20% 20% 20%;
+    justify-items: left;
+}
+
+.base_theme .num_button {
+    /* padding: 4px; */
+    border: 0px;
+}
+
+.base_theme .operator_button {
+    padding: 4px;
+    border: 0px;
+}
+
+.base_theme .register_button {
+    padding: 4px;
+    border: 0px;
+}
+
+.base_theme #cash_register > table {
+    width: inherit;
+    border-spacing: 0px;
+    padding: 8px;
+}
+
+.base_theme .button {
+    width: 24px;
+    border: 0px;
+}
+
+.base_theme button:focus {
+    outline: none;
+}
+
+.base_theme .cash_register_button {
+    margin-left: 15px;
+    width: -webkit-fill-available;
+    text-align: left;
+    border: 0px;
+}
